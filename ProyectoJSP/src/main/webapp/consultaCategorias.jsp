@@ -37,7 +37,13 @@
             <td><button class="btn btn-danger"
                         onclick="alerta('<%=rs.getString("id_categorias")%>')">Eliminar</button></td>
             <td><button class="btn btn-info"
-                        onclick="modificar('<%=rs.getString("id_categorias")%>','<%=rs.getString("nombre")%>','<%=rs.getString("descripcion")%>','<%=rs.getString("estado")%>')" >Modificar</button></td>
+                        onclick="modificar('<%=rs.getString("id_categorias")%>',
+                                '<%=rs.getString("nombre")%>',
+                                '<%=rs.getString("descripcion")%>',
+                                '<%=rs.getString("estado")%>',
+                                '<%=rs.getString("fecha_creacion")%>',
+                                '<%=rs.getString("creado_por")%>')">Modificar</button>
+            </td>
         </tr>
         <%
             }
@@ -55,12 +61,14 @@
             location.href ="categoriaController.jsp?operacion=eliminar&id="+id;
         }
     }
-    function modificar(id, nombre, descripcion, estado)
+    function modificar(id_categorias, nombre, descripcion, estado, fecha_creacion, creado_por)
     {
-        document.getElementById("id_categorias").value=id;
-        document.getElementById("nombre").value=nombre;
-        document.getElementById("descripcion").value=descripcion;
-        document.getElementById("estado").value=estado;
-        document.getElementById("operacion").value="modificar";
+        document.getElementById("id_categorias").value = id_categorias;
+        document.getElementById("nombre").value = nombre;
+        document.getElementById("descripcion").value = descripcion;
+        document.getElementById("estado").value = estado;
+        document.getElementById("fecha_creacion").value = fecha_creacion;
+        document.getElementById("creado_por").value = creado_por;
+        document.getElementById("operacion").value = "modificar";
     }
 </script>

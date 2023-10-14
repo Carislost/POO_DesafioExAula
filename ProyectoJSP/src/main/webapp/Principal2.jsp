@@ -38,7 +38,7 @@
             st = conexion.prepareStatement("SELECT id, usuario FROM Usuarios");
             rs = st.executeQuery();
         %>
-        <form role="form" action="controllerCategorias.jsp" method="POST">
+        <form role="form" action="categoriaController.jsp" method="POST">
             <div class="col-md-12" id="conten">
                 <input type="hidden" value="insertar" name="operacion" id="operacion">
                 <div class="form-group">

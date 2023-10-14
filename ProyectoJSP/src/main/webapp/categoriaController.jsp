@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Carlos
-  Date: 13/10/2023
-  Time: 07:58 p. m.
+  Date: 14/10/2023
+  Time: 01:12 a. m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
@@ -45,7 +45,7 @@
 //            throwables.printStackTrace();
 //        }
 
-     if (operacion.equals("insertar")) {
+    if (operacion.equals("insertar")) {
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
         String fecha_creacion = request.getParameter("fecha_creacion");
@@ -68,13 +68,17 @@
         String descripcion = request.getParameter("descripcion");
         String fecha_creacion = request.getParameter("fecha_creacion");
         String estado = request.getParameter("estado");
+        int creado_por = Integer.parseInt(request.getParameter("creado_por"));
 
-        st = conexion.prepareStatement("UPDATE Categorias SET nombre=?, descripcion=?, fecha_creacion=?, estado=? WHERE id_categorias=?");
+
+        st = conexion.prepareStatement("UPDATE Categorias SET nombre=?, descripcion=?, fecha_creacion=?, estado=?, creado_por=? WHERE id_categorias=?");
+
         st.setString(1, nombre);
         st.setString(2, descripcion);
         st.setString(3, fecha_creacion);
         st.setString(4, estado);
-        st.setInt(5, id_categorias);
+        st.setInt(5, creado_por);
+        st.setInt(6, id_categorias);
         st.executeUpdate();
 
         response.sendRedirect("Principal2.jsp?exito=si");
