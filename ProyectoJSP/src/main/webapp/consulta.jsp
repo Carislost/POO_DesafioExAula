@@ -60,7 +60,12 @@
     }
     function modificar(id, nombre, descripcion, precio, costo)
     {
-        document.getElementById("id_productos").value=id;
+        var elem = document.getElementById("id_categorias");
+        if (elem) {
+            elem.value = id;
+        } else {
+            console.error("Elemento id_categorias no encontrado");
+        }
         document.getElementById("nombre").value=nombre;
         document.getElementById("descripcion").value=descripcion;
         document.getElementById("precio").value=precio;

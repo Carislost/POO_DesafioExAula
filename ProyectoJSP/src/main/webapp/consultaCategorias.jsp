@@ -61,14 +61,15 @@
             location.href ="categoriaController.jsp?operacion=eliminar&id="+id;
         }
     }
-    function modificar(id_categorias, nombre, descripcion, estado, fecha_creacion, creado_por)
+    function modificar(id, nombre, descripcion, estado, fecha_creacion, creado_por)
     {
-        document.getElementById("id_categorias").value = id_categorias;
+        document.getElementById("id_categorias").value = id;
         document.getElementById("nombre").value = nombre;
         document.getElementById("descripcion").value = descripcion;
         document.getElementById("estado").value = estado;
         document.getElementById("fecha_creacion").value = fecha_creacion;
         document.getElementById("creado_por").value = creado_por;
         document.getElementById("operacion").value = "modificar";
+        location.href ="categoriaController.jsp?operacion=modificar";
     }
 </script>

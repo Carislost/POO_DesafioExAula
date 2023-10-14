@@ -64,7 +64,6 @@
                     <div class="input-group">
                         <select name="creado_por" id="creado_por" class="form-control" required>
                             <%
-                                // Aquí vamos a llenar el combobox con los usuarios de la base de datos
                                 PreparedStatement stUsuarios = conexion.prepareStatement("SELECT id, usuario FROM Usuarios");
                                 ResultSet rsUsuarios = stUsuarios.executeQuery();
                                 while (rsUsuarios.next()) {
