@@ -15,6 +15,6 @@
     Class.forName("com.mysql.jdbc.Driver");
 // Se obtiene una conexión con la base de datos.
     conexion =
-            DriverManager.getConnection("jdbc:mysql://localhost/personabddg8", "root", "");
+            DriverManager.getConnection("jdbc:mysql://localhost/Misuper", "root", "");
     String valor;
 %>

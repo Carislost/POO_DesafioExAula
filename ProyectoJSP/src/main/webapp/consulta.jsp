@@ -5,52 +5,47 @@
   Time: 12:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="conexion.jsp" %>
 <div class="">
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
             <th>Id</th>
-            <th>Nombres</th>
-            <th>Edad</th>
-            <th>Sexo</th>
-            <th>Ocupacion</th>
-            <th>Fecha de nacimiento</th>
-            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Costo</th>
             <th>Eliminar</th>
             <th>Modificar</th>
         </tr>
         </thead>
         <tbody>
-            <%
- st = conexion.prepareStatement("SELECT p.id_persona,p.nombre_persona,p.edad_persona,p.sexo_persona,p.id_ocupacion,p.fecha_nac, p.usuario, o.ocupacion FROM persona p INNER JOIN ocupaciones o on p.id_ocupacion= o.id_ocupacion");
- rs = st.executeQuery();
- while (rs.next()) {
- %>
+        <%
+            st = conexion.prepareStatement("SELECT * FROM Productos");
+            rs = st.executeQuery();
+            while (rs.next()) {
+        %>
         <tr>
-            <td><%=rs.getString("id_persona")%>
+            <td><%=rs.getString("id_productos")%>
             </td>
-            <td><%=rs.getString("nombre_persona")%>
+            <td><%=rs.getString("nombre")%>
             </td>
-            <td><%=rs.getString("edad_persona")%>
+            <td><%=rs.getString("descripcion")%>
             </td>
-            <td><%=rs.getString("sexo_persona")%>
+            <td><%=rs.getString("precio")%>
             </td>
-            <td><%=rs.getString("ocupacion")%>
-            </td>
-            <td><%=rs.getString("fecha_nac")%>
-            </td>
-            <td><%=rs.getString("usuario")%>
+            <td><%=rs.getString("costo")%>
             </td>
             <td><button class="btn btn-danger"
-                        onclick="alerta('<%=rs.getString("id_persona")%>')">Eliminar</button></td>
+                        onclick="alerta('<%=rs.getString("id_productos")%>')">Eliminar</button></td>
             <td><button class="btn btn-info"
-                        onclick="modificar('<%=rs.getString("id_persona")%>','<%=rs.getString("nombre_persona")%>','<%=rs.getString("edad_persona")%>','<%=rs.getString("sexo_persona")%>','<%=rs.getString("id_ocupacion")%>','<%=rs.getString("fecha_nac")%>','<%=rs.getString("usuario")%>')" >Modificar</button></td>
+                        onclick="modificar('<%=rs.getString("id_productos")%>','<%=rs.getString("nombre")%>','<%=rs.getString("descripcion")%>','<%=rs.getString("precio")%>','<%=rs.getString("costo")%>')" >Modificar</button></td>
         </tr>
-            <%
-                }
-                conexion.close();
-            %>
+        <%
+            }
+            conexion.close();
+        %>
         </tbody>
     </table>
 </div>
@@ -58,20 +53,18 @@
     function alerta(id)
     {
         var mensaje;
-        var opcion = confirm("Esta seguro de eliminar este registro");
+        var opcion = confirm("Esta seguro de eliminar este producto");
         if (opcion == true) {
             location.href ="controller.jsp?operacion=eliminar&id="+id;
         }
     }
-    function modificar(id, nombre,edad,sexo,ocupacion,fecha,usuario)
+    function modificar(id, nombre, descripcion, precio, costo)
     {
-        document.getElementById("idpersona").value=id;
+        document.getElementById("id_productos").value=id;
         document.getElementById("nombre").value=nombre;
-        document.getElementById("edad").value=edad;
-        document.getElementById("sexo").value=sexo;
-        document.getElementById("ocupacion").value=ocupacion;
-        document.getElementById("fecha").value=fecha;
-        document.getElementById("usuario").value=usuario;
+        document.getElementById("descripcion").value=descripcion;
+        document.getElementById("precio").value=precio;
+        document.getElementById("costo").value=costo;
         document.getElementById("operacion").value="modificar";
         hijo = document.getElementById("passhidden");
         padre = hijo.parentNode;
